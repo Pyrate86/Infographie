@@ -50,6 +50,7 @@ t_env		init_env(t_env e, char *name)
 	}
 	e.win = mlx_new_window(e.mlx, WIDTH, HEIGHT, name);
 	e.img = mlx_new_image(e.mlx, WIDTH, HEIGHT);
+	e.load_img = mlx_new_image(e.mlx, WIDTH, 3);
 	e.motion = 0;
 	e.info = 0;
 	e.help = 1;

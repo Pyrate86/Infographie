@@ -86,5 +86,7 @@ void			julia(t_env *e)
 			hsvtorgb(&color, i % 255, 255, 255 * (i < floor(e->frac->m_iter)));
 			mlx_pixel_put_img(e->img, loop.x, loop.y, color.hexa);
 		}
+		if (loop.x % 100 == 0)
+			show_percent(e, loop.x);
 	}
 }

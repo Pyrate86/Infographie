@@ -41,11 +41,6 @@ void				ft_putcolorendl(char *str, int color);
 void				ft_putcolor(char *str, int color);
 
 /*
-** ft_get
-*/
-int	ft_getnbr(char *s);
-
-/*
 ** ft_to
 */
 int					ft_toupper(int c);
@@ -111,7 +106,6 @@ void				*ft_memchr(const void *s, int c, size_t n);
 void				*ft_memset(void *b, int c, size_t len);
 void				*ft_realloc(void *ptr, size_t size);
 
-
 /*
 ** Lists
 */
@@ -126,10 +120,6 @@ t_list				*ft_lstend(t_list *t);
 /*
 ** maths
 */
-
 int					ft_pow(int n, int p);
 
-/*
-** 
-*/
 #endif

@@ -81,7 +81,7 @@ clean:
 
 fclean: clean
 	rm -rf libft/libft.a
-	rm -rf $(NAME)
+	rm -rf $(BIN_PATH)
 
 proper: all clean
 

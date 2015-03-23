@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fract-ol.c                                         :+:      :+:    :+:   */
+/*   mandelbrot.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ghilbert <ghilbert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,7 +12,7 @@
 
 #include "fractol.h"
 
-int		draw_mand(t_complexe *c, t_complexe *z, double iter)
+int				draw_mand(t_complexe *c, t_complexe *z, double iter)
 {
 	int		i;
 	double	tmpx;
@@ -54,15 +54,15 @@ static t_frac	*init_fractal(void)
 	return (frac);
 }
 
-void	mandeloop(t_complexe *c, t_complexe *z, t_coord loop, t_frac frac)
+void			mandeloop(t_complexe *c, t_complexe *z, t_coord l, t_frac frac)
 {
-	c->reel = loop.x / frac.zoom + frac.x1;
-	c->imag = loop.y / frac.zoom + frac.y1;
+	c->reel = l.x / frac.zoom + frac.x1;
+	c->imag = l.y / frac.zoom + frac.y1;
 	z->reel = frac.z_r;
 	z->imag = frac.z_i;
 }
 
-void	mandelbrot(t_env *e)
+void			mandelbrot(t_env *e)
 {
 	t_coord		loop;
 	t_complexe	c;
@@ -86,5 +86,7 @@ void	mandelbrot(t_env *e)
 			hsvtorgb(&color, i % 255, 255, 255 * (i < floor(e->frac->m_iter)));
 			mlx_pixel_put_img(e->img, loop.x, loop.y, color.hexa);
 		}
+		if (loop.x % 100 == 0)
+			show_percent(e, loop.x);
 	}
 }

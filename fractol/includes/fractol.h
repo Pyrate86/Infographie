@@ -80,6 +80,7 @@ typedef struct	s_env
 	int			info;
 	int			help;
 	int			init;
+	void		*load_img;
 }				t_env;
 
 void			draw(t_env *e);

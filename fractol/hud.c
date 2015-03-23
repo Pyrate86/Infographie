@@ -14,19 +14,19 @@
 
 void		show_percent(t_env *e, int x)
 {
-	int	color;
+	t_coord	a;
+	t_coord b;
 
-	color = 0xFFFFFF;
-	mlx_pixel_put(e->mlx, e->win, x, 0, color);
-	mlx_pixel_put(e->mlx, e->win, x, 3, color);
-	mlx_pixel_put(e->mlx, e->win, x + 1, 0, color);
-	mlx_pixel_put(e->mlx, e->win, x + 1, 3, color);
-	mlx_pixel_put(e->mlx, e->win, x + 1, 1, color);
-	mlx_pixel_put(e->mlx, e->win, x + 1, 2, color);
-	if (x > 0)
-		color = 0x046380;
-	mlx_pixel_put(e->mlx, e->win, x, 1, color);
-	mlx_pixel_put(e->mlx, e->win, x, 2, color);
+	a.x = 0;
+	a.y = 0;
+	b.x = x;
+	b.y = 3;
+	draw_sqr(e->load_img, a, b, 0xFFFFFF);
+	a.x = x;
+	b.x = WIDTH;
+	draw_sqr(e->load_img, a, b, 0x000000);
+	mlx_put_image_to_window(e->mlx, e->win, e->load_img, 0, 0);
+	mlx_do_sync(e->mlx);
 }
 
 static void	write_help(t_env *e, t_coord a)
