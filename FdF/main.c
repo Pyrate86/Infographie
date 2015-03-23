@@ -39,7 +39,6 @@ int	main(int ac, char **av)
 		e.win = mlx_new_window(e.mlx, WIDTH, HEIGHT, "FdF");
 		e.img = mlx_new_image(e.mlx, WIDTH, HEIGHT);
 		e.data = mlx_get_data_addr(e.img, &(e.bpp), &(e.sl), &(e.endian));
-		e.file = av[1 + e.loading];
 		init(&e);
 		if (ac == 3)
 			if (get_arg(&e, av) == 0)
@@ -47,6 +46,7 @@ int	main(int ac, char **av)
 				help();
 				return (0);
 			}
+		e.file = av[1 + e.loading];
 		mlx_hook(e.win, 2, 3, key_hook, &e);
 		mlx_expose_hook(e.win, expose_hook, &e);
 		mlx_loop(e.mlx);
