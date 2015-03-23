@@ -21,7 +21,6 @@ static void	help(void)
 
 static int	get_arg(t_env *e, char **av)
 {
-	ft_putstr(av[1]);
 	if (ft_strcmp(av[1], "-l") != 0)
 		return (0);
 	e->loading = 1;
