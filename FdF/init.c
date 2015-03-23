@@ -19,4 +19,5 @@ void	init(t_env *e)
 	e->interval.y = 0;
 	e->getmap = 0;
 	e->height = 5;
+	e->loading = 0;
 }

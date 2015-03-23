@@ -50,6 +50,7 @@ typedef struct	s_env
 	int			img_w;
 	int			img_h;
 
+	int			loading;
 	char		*file;
 
 	int			getmap;
