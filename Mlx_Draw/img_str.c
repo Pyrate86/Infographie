@@ -6,7 +6,7 @@
 /*   By: ghilbert <ghilbert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/15 15:24:42 by ghilbert          #+#    #+#             */
-/*   Updated: 2015/04/15 16:24:57 by ghilbert         ###   ########.fr       */
+/*   Updated: 2015/04/16 12:03:34 by ghilbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,48 +16,37 @@ void	init_str(t_env *e)
 {
 	int width, height;
 
-	e->char_sheet = mlx_xpm_file_to_image (e->mlx,"./includes/font.xpm", &width, &height );
+	e->img_font = mlx_xpm_file_to_image (e->mlx,"./includes/font.xpm", &width, &height );
 }
 
 static void	draw_char(t_env *e, t_coord a, int color, char c)
 {
-	(void)e;
-	(void)a;
-	(void)color;
-	(void)c;
+	t_image *font;
+	int x;
+	int y;
+	int i;
+	int pxl;
 
-	int		i;
-	int		j;
-	int		k;
-	int		l;
-
-	char	*data;
-	int		bbp;
-	int		sizeline;
-	int		endian;
-
-	data = mlx_get_data_addr(e->char_sheet, &bbp, &sizeline, &endian);
-	bbp /= 8;
-
-	i = 0;
-	while (i < 10)
+	font = (t_image *)malloc(sizeof(t_image));
+	font->data = mlx_get_data_addr(e->img_font, &(font->bpp), &(font->sl), &(font->end));
+	x = 0;
+	while (x < 10)
 	{
-		j = 0;
-		while (j < 20)
+		y = 0;
+		while (y < 20)
 		{
-			k = (i * (c - 32)) * bbp + j * sizeline;
-
-			l = a.x * e->bpp + a.y * e->sl;
-
-			e->data[l] = data[k];
-			e->data[l + 1] = data[k + 1];
-			e->data[l + 2] = data[k + 2];
-
-			j++;
+			pxl = (x + (c - 32) * 12) * (font->bpp / 8) + y * font->sl;
+			i = (a.x + x) * (e->bpp / 8) + (a.y + y) * e->sl;
+			if (font->data[pxl] != 0)
+			{
+				e->data[i] = color % 0x100;
+				e->data[i + 1] = color % 0x10000 / 0x100;
+				e->data[i + 2] = color / 0x10000;
+			}
+			y++;
 		}
-		i++;
+		x++;
 	}
-
 }
 
 void	mlx_string_put_img(t_env *e, t_coord a, int color, char *str)

@@ -6,7 +6,7 @@
 /*   By: ghilbert <ghilbert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/15 11:28:30 by ghilbert          #+#    #+#             */
-/*   Updated: 2015/04/15 15:39:48 by ghilbert         ###   ########.fr       */
+/*   Updated: 2015/04/16 12:00:35 by ghilbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,14 @@
 
 # define WIDTH	640
 # define HEIGHT	480
+
+typedef struct 	s_image
+{
+	char		*data;
+	int			bpp;
+	int			sl;
+	int			end;
+}				t_image;
 
 typedef struct	s_coord
 {
@@ -41,7 +49,7 @@ typedef struct	s_env
 	int			sl;
 	int			endian;
 
-	void		*char_sheet;
+	void		*img_font;
 }				t_env;
 
 // hooks.c

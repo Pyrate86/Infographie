@@ -6,7 +6,7 @@
 /*   By: ghilbert <ghilbert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/15 11:52:32 by ghilbert          #+#    #+#             */
-/*   Updated: 2015/04/15 16:14:53 by ghilbert         ###   ########.fr       */
+/*   Updated: 2015/04/16 12:10:26 by ghilbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,11 @@ void	draw(t_env *e)
 
 // img_str.c
 	// mlx_string_put_img(e, coord(((WIDTH / 4) - 17), HEIGHT - 40), GREY, "IMAGES");
-	mlx_string_put_img(e, coord(100, 100), GREY, "IMAGES");
+	mlx_string_put_img(e, coord(40, 30), BLACK, "Test");
+	mlx_string_put_img(e, coord(90, 30), DARKGREY, "Test");
+	mlx_string_put_img(e, coord(140, 30), GREY, "Test");
+	mlx_string_put_img(e, coord(190, 30), LIGHTGREY, "Test");
+	mlx_string_put_img(e, coord(240, 30), WHITE, "Test");
 
 (void)e;
 }

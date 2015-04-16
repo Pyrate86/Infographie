@@ -6,7 +6,7 @@
 #    By: ghilbert <ghilbert@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/11/29 15:35:12 by ghilbert          #+#    #+#              #
-#    Updated: 2015/04/15 16:28:22 by ghilbert         ###   ########.fr        #
+#    Updated: 2015/04/16 11:50:46 by ghilbert         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,9 @@ SRC_NAME	=	draw.c \
 				win_line.c \
 				win_square.c
 
-HEADER 		= $(INC_PATH)mlx_tools.h
+HEADER 		=	$(INC_PATH)mlx_tools.h \
+				$(INC_PATH)colors.h \
+				$(INC_PATH)keys.h
 
 LIBX11		= -L%%%% -lXext -lX11
 
