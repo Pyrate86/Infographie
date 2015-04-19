@@ -6,7 +6,7 @@
 /*   By: ghilbert <ghilbert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/15 11:45:31 by ghilbert          #+#    #+#             */
-/*   Updated: 2015/04/15 12:44:52 by ghilbert         ###   ########.fr       */
+/*   Updated: 2015/04/19 15:31:17 by ghilbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,4 +28,13 @@ t_coord		coord(int x, int y)
 	ret.x = x;
 	ret.y = y;
 	return (ret);
+}
+
+int			get_pxl_color(int c)
+{
+	int color;
+
+	color = c <= 0x7F && c >= 0 ? c : c + 0x100;
+	color = color > 255 ? 255 : color;
+	return (color);
 }

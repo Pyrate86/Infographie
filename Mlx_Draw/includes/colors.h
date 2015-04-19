@@ -6,7 +6,7 @@
 /*   By: ghilbert <ghilbert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/15 11:55:55 by ghilbert          #+#    #+#             */
-/*   Updated: 2015/04/16 12:06:00 by ghilbert         ###   ########.fr       */
+/*   Updated: 2015/04/16 22:23:03 by ghilbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,8 @@
 # define YELLOW			0xFFFF00
 # define PURPLE			0xFF00FF
 
-# define DARKGREY		0x5E5E5E
+# define DARKGREY		0x404040
 # define GREY			0x7F7F7F
-# define LIGHTGREY		0xC7C7C7
-
-
+# define LIGHTGREY		0xBFBFBF
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: ghilbert <ghilbert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/15 11:34:01 by ghilbert          #+#    #+#             */
-/*   Updated: 2015/04/15 14:15:20 by ghilbert         ###   ########.fr       */
+/*   Updated: 2015/04/16 20:56:22 by ghilbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,15 +21,15 @@ static void		redraw(t_env *e)
 	draw_win(e);
 }
 
-int			key_hook(int k, t_env *e)
+int				key_hook(int k, t_env *e)
 {
-	if (k == 65307)
-		exit(0);
+	if (k == ESC)
+		exit (0);
 	redraw(e);
 	return (k);
 }
 
-int			expose_hook(t_env *e)
+int				expose_hook(t_env *e)
 {
 	redraw(e);
 	return (0);

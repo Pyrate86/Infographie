@@ -6,7 +6,7 @@
 #    By: ghilbert <ghilbert@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/11/29 15:35:12 by ghilbert          #+#    #+#              #
-#    Updated: 2015/04/16 11:50:46 by ghilbert         ###   ########.fr        #
+#    Updated: 2015/04/16 20:40:59 by ghilbert         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,14 +17,18 @@ SRC_PATH	= ./
 OBJ_PATH	= obj/
 INC_PATH	= includes/
 
-SRC_NAME	=	draw.c \
+SRC_NAME	=	alpha_mask.c \
+				draw.c \
 				hooks.c \
+				init_path.c \
 				img_cicrle.c \
 				img_line.c \
 				img_pixel.c \
 				img_square.c \
 				img_str.c \
+				luminosity.c \
 				main.c \
+				opacity.c \
 				utils.c \
 				win_circle.c \
 				win_line.c \
@@ -34,13 +38,18 @@ HEADER 		=	$(INC_PATH)mlx_tools.h \
 				$(INC_PATH)colors.h \
 				$(INC_PATH)keys.h
 
-LIBX11		= -L%%%% -lXext -lX11
+LIBFT_PATH	= libft
+LIBFT_NAME	= -lft
+LIBFT		= -L$(LIBFT_PATH) $(LIBFT_NAME)
 
-LIBMLX		= -Llibs -lmlx
+LIBX_NAME	= -lmlx -framework OpenGL -framework AppKit
 
 OTHER_LIBS	= -lm
 
-LIBS		= $(LIBMLX) $(LIBX11) $(OTHER_LIBS)
+LIBX		= $(LIBX_NAME)
+
+LIBS		= $(LIBFT) $(LIBX) $(OTHER_LIBS)
+
 
 CC			= gcc
 CFLAGS		+= -Wall -Werror -Wextra
@@ -50,14 +59,17 @@ OBJS 		= $(addprefix $(OBJ_PATH),$(subst .c,.o,$(SRC_NAME)))
 BIN			= $(addprefix $(BIN_PATH),$(NAME))
 
 
-.PHONY: all clean fclean re proper debug debugall
+.PHONY: all clean fclean re proper debug debugall libft
 
 all:	$(BIN)
 
 $(NAME): $(BIN)
 
-$(BIN): $(OBJS) $(HEADER) | $(BIN_PATH)
+$(BIN): $(OBJS) $(HEADER) libft/libft.a | $(BIN_PATH)
 	$(CC) $(CFLAGS) -I$(INC_PATH) $(OBJS) -o $(BIN) $(LIBS)
+
+libft/libft.a:
+	make -C libft
 
 $(OBJS): | $(OBJ_PATH)
 
@@ -75,10 +87,12 @@ $(BIN_PATH):
 		fi
 
 clean:
+	@make clean -C libft
 	rm -rf $(OBJS)
 	rm -rf $(OBJ_PATH)
 
 fclean: clean
+	rm -rf libft/libft.a
 	rm -rf $(BIN_PATH)
 
 proper: all clean

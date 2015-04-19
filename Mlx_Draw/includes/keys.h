@@ -6,13 +6,13 @@
 /*   By: ghilbert <ghilbert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/15 11:36:01 by ghilbert          #+#    #+#             */
-/*   Updated: 2015/04/15 11:36:50 by ghilbert         ###   ########.fr       */
+/*   Updated: 2015/04/15 20:41:28 by ghilbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef KEYS_H
 # define KEYS_H
 
-# define ESC	65307
+# define ESC	53
 
 #endif
