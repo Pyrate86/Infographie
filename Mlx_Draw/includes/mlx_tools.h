@@ -6,7 +6,7 @@
 /*   By: ghilbert <ghilbert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/15 11:28:30 by ghilbert          #+#    #+#             */
-/*   Updated: 2015/04/19 15:29:47 by ghilbert         ###   ########.fr       */
+/*   Updated: 2015/04/19 21:39:04 by ghilbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,9 @@
 # include <unistd.h>
 # include <stdlib.h>
 
+# include <math.h>
+# include <limits.h>
+
 # include "keys.h"
 # include "colors.h"
 # include "mlx.h"
@@ -24,6 +27,16 @@
 
 # define WIDTH	640
 # define HEIGHT	480
+
+#define max(a,b) \
+   ({ __typeof__ (a) _a = (a); \
+       __typeof__ (b) _b = (b); \
+     _a > _b ? _a : _b; })
+
+#define min(a,b) \
+   ({ __typeof__ (a) _a = (a); \
+       __typeof__ (b) _b = (b); \
+     _a < _b ? _a : _b; })
 
 typedef struct	s_image
 {
@@ -44,6 +57,17 @@ typedef struct	s_coord
 	int			y;
 }				t_coord;
 
+typedef struct	s_circle
+{
+	t_coord		center;
+	int			radius;
+}				t_circle;
+
+typedef struct	s_line
+{
+	t_coord		p1;
+	t_coord		p2;
+}				t_line;
 typedef struct	s_env
 {
 	char		*exec_path;
@@ -80,6 +104,7 @@ void			draw_win(t_env *e);
 void			swap_coord(t_coord *a, t_coord *b);
 t_coord			coord(int x, int y);
 int				get_pxl_color(int c);
+t_coord				*intersect(t_line l1, t_line l2);
 
 /*
 ** init_path.c
@@ -100,8 +125,8 @@ void			mlx_string_put_img(t_env *e, t_coord a, int color, char *str);
 /*
 ** img_circle.c
 */
-void			draw_circle(void *img_ptr, t_coord center, int r, int color);
-void			draw_fcircle(void *img_ptr, t_coord center, int r, int color);
+void			draw_circle(void *img_ptr, t_circle c, int color);
+void			draw_fcircle(void *img_ptr, t_circle c, int color);
 
 /*
 ** img_lines.c
@@ -117,10 +142,17 @@ void			draw_square(void *img_ptr, t_coord a, t_coord b, int color);
 void			draw_fsquare(void *img_ptr, t_coord a, t_coord b, int color);
 
 /*
+** img_polygone.c
+*/
+void			draw_poly_from_pts(void *img_ptr, t_coord *pts, int h, int c);
+void			draw_fpoly_from_pts(void *img_ptr, t_coord *pts, int h, int c);
+void			draw_polygone(void *img_ptr, t_circle c, int h, int color);
+void			draw_fpolygone(void *img_ptr, t_circle c, int h, int color);
+/*
 ** win_circle.c
 */
-void			draw_win_circle(t_env *e, t_coord center, int r, int color);
-void			draw_win_fcircle(t_env *e, t_coord center, int r, int color);
+void			draw_win_circle(t_env *e, t_circle c, int color);
+void			draw_win_fcircle(t_env *e, t_circle c, int color);
 
 /*
 ** win_line.c

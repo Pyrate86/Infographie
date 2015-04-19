@@ -6,7 +6,7 @@
 /*   By: ghilbert <ghilbert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/15 11:52:32 by ghilbert          #+#    #+#             */
-/*   Updated: 2015/04/17 20:29:49 by ghilbert         ###   ########.fr       */
+/*   Updated: 2015/04/19 23:55:03 by ghilbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,45 +14,18 @@
 
 void	draw(t_env *e)
 {	
-	char	*str;
-	char *split;
-	str = "Test__avec__rien";
-	split = ft_strreplace(str, "_-_", " / ");
-	ft_putendl("########");
-		ft_putendl(str);
-		ft_putendl(split);
-
-	str = "Test_-_avec_-_milieu";
-	split = ft_strreplace(str, "_-_", " / ");
-	ft_putendl("########");
-		ft_putendl(str);
-		ft_putendl(split);
-
-	str = "Test_-_avec_-_fin_-_";
-	split = ft_strreplace(str, "_-_", " / ");
-	ft_putendl("########");
-		ft_putendl(str);
-		ft_putendl(split);
-
-	str = "_-_Test_-_avec_-_debut";
-	split = ft_strreplace(str, "_-_", " / ");
-	ft_putendl("########");
-		ft_putendl(str);
-		ft_putendl(split);
-	str = "_-_Test_-_avec_-_debut_-_et_-_fin_-_";
-	split = ft_strreplace(str, "_-_", " / ");
-	ft_putendl("########");
-		ft_putendl(str);
-		ft_putendl(split);
-
-	(void)split;
 // square.c
 	draw_square(e->img, coord(10, 10), coord((WIDTH / 2) - 10, HEIGHT - 10), BLUE);
 	draw_fsquare(e->img, coord(30, 30), coord((WIDTH / 2) - 30, HEIGHT - 30), GREEN);
 
 // circle.c
-	draw_circle(e->img, coord((WIDTH / 2) / 2, HEIGHT / 2), 100, WHITE);
-	draw_fcircle(e->img, coord((WIDTH / 2) / 2, HEIGHT / 2), 50, RED);
+	t_circle	circle;
+
+	circle.center = coord((WIDTH / 2) / 2, HEIGHT / 2);
+	circle.radius = 100;
+	draw_circle(e->img, circle, WHITE);
+	circle.radius = 50;
+	draw_fcircle(e->img, circle, RED);
 
 // lines.c
 	draw_line(e->img, coord((WIDTH / 2) / 2, HEIGHT / 2), coord((WIDTH / 2) - 30, HEIGHT - 30), DARKBLUE);
@@ -105,8 +78,28 @@ void	draw(t_env *e)
 
 	set_luminosity(img, 0.5);
 
+// img_polygone.c
+	t_coord	*pts;
 
-(void)e;
+	pts = (t_coord *)malloc(sizeof(t_coord) * 5);
+	pts[0] = coord(70, 40);
+	pts[1] = coord(90, 100);
+	pts[2] = coord(40, 60);
+	pts[3] = coord(100, 60);
+	pts[4] = coord(50, 100);
+	draw_poly_from_pts(e->img, pts, 5, BLUE);
+	pts[0] = coord(130, 40);
+	pts[1] = coord(100, 60);
+	pts[2] = coord(110, 100);
+	pts[3] = coord(150, 100);
+	pts[4] = coord(160, 60);
+	draw_fpoly_from_pts(e->img, pts, 5, BLUE);
+
+	circle.center = coord(190, 70);
+	circle.radius = 30;
+	draw_polygone(e->img, circle, 3, PURPLE);
+	circle.center = coord(250, 70);
+	draw_polygone(e->img, circle, 4, BLUE);
 }
 
 void	draw_win(t_env *e)
@@ -116,8 +109,12 @@ void	draw_win(t_env *e)
 	draw_win_fsquare(e, coord((WIDTH / 2) + 30, 30), coord(WIDTH - 30, HEIGHT - 30), GREEN);
 
 // win_circle.c
-	draw_win_circle(e, coord(3 * (WIDTH / 4), HEIGHT / 2), 100, WHITE);
-	draw_win_fcircle(e, coord(3 * (WIDTH / 4), HEIGHT / 2), 50, RED);
+		t_circle	circle;
+	circle.center = coord(3 * (WIDTH / 4), HEIGHT / 2);
+	circle.radius = 100;
+	draw_win_circle(e, circle, WHITE);
+	circle.radius = 50;
+	draw_win_fcircle(e, circle, RED);
 
 // win_line.c
 	draw_win_line(e, coord(3 * (WIDTH / 4), HEIGHT / 2), coord(WIDTH /2 + 30, 30), PURPLE);

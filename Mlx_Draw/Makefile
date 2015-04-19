@@ -6,7 +6,7 @@
 #    By: ghilbert <ghilbert@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/11/29 15:35:12 by ghilbert          #+#    #+#              #
-#    Updated: 2015/04/16 20:40:59 by ghilbert         ###   ########.fr        #
+#    Updated: 2015/04/19 15:56:39 by ghilbert         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,7 @@ SRC_NAME	=	alpha_mask.c \
 				img_cicrle.c \
 				img_line.c \
 				img_pixel.c \
+				img_polygone.c \
 				img_square.c \
 				img_str.c \
 				luminosity.c \
