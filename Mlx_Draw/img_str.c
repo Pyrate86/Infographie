@@ -6,7 +6,7 @@
 /*   By: ghilbert <ghilbert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/15 15:24:42 by ghilbert          #+#    #+#             */
-/*   Updated: 2015/04/16 19:16:13 by ghilbert         ###   ########.fr       */
+/*   Updated: 2015/04/20 23:25:29 by ghilbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ static void	draw_char(t_env *e, t_coord a, int color, char c)
 	}
 }
 
-void		mlx_string_put_img(t_env *e, t_coord a, int color, char *str)
+void		draw_str(t_env *e, t_coord a, int color, char *str)
 {
 	int i;
 

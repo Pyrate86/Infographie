@@ -6,7 +6,7 @@
 /*   By: ghilbert <ghilbert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/15 13:27:48 by ghilbert          #+#    #+#             */
-/*   Updated: 2015/04/15 20:41:07 by ghilbert         ###   ########.fr       */
+/*   Updated: 2015/04/20 17:15:11 by ghilbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	draw_fsquare(void *img_ptr, t_coord a, t_coord b, int color)
 		y = a.y;
 		while (y <= b.y)
 		{
-			mlx_pixel_put_img(img_ptr, x, y, color);
+			draw_pixel(img_ptr, x, y, color);
 			y++;
 		}
 		x++;

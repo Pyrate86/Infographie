@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   img_polygone.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ghilbert <ghilbert@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2015/04/20 15:02:38 by ghilbert          #+#    #+#             */
+/*   Updated: 2015/04/20 23:53:24 by ghilbert         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "mlx_tools.h"
 
-void	draw_poly_from_pts(void *img_ptr, t_coord *pts, int h, int c)
+void		draw_poly_from_pts(void *img_ptr, t_coord *pts, int h, int c)
 {
 	int	i;
 
@@ -12,24 +24,20 @@ void	draw_poly_from_pts(void *img_ptr, t_coord *pts, int h, int c)
 	}
 }
 
-int		is_in_poly(t_coord p, int max, t_coord *pts, int h)
+static int	is_in_poly(t_coord pt, t_coord *pts, int h)
 {
 	t_line	a;
 	t_line	b;
-	int		i;
 	int		inter;
-	t_coord	*tmp;
+	int		i;
 
-	a.p1 = coord(p.x, p.y);
-	a.p2 = coord(p.x + 1, max);
-	i = 0;
 	inter = 0;
+	i = 0;
+	a = line(pt, coord(pt.x + 1, HEIGHT));
 	while (i < h)
 	{
-		b.p1 = pts[i];
-		b.p2 = pts[i == h - 1 ? 0 : i + 1];
-		tmp = intersect(a, b);
-		if (tmp)
+		b = line (pts[i], pts[i == h - 1 ? 0 : i + 1]);
+		if (intersect(a, b) > 0)
 			inter++;
 		i++;
 	}
@@ -38,13 +46,12 @@ int		is_in_poly(t_coord p, int max, t_coord *pts, int h)
 	return (0);
 }
 
-void	draw_fpoly_from_pts(void *img_ptr, t_coord *pts, int h, int c)
+void		draw_fpoly_from_pts(void *img_ptr, t_coord *pts, int h, int c)
 {
-	int	i;
-	int x;
-	int y;
-	t_coord min;
-	t_coord max;
+	int		i;
+	int		y;
+	t_coord	min;
+	t_coord	max;
 
 	i = 0;
 	min = coord(pts[i].x, pts[i].y);
@@ -57,21 +64,18 @@ void	draw_fpoly_from_pts(void *img_ptr, t_coord *pts, int h, int c)
 		max.y = pts[i].y > max.y ? pts[i].y : max.y;
 		i++;
 	}
-	x = min.x;
-	while (x <= max.x)
+	while (min.x++ <= max.x)
 	{
 		y = min.y;
-		while (y <= max.y)
+		while (y++ <= max.y)
 		{
-			if (is_in_poly(coord(x, y), max.y + 2, pts, h))
-				mlx_pixel_put_img(img_ptr, x, y, c);
-			y++;
+			if (is_in_poly(coord(min.x, y), pts, h))
+				draw_pixel(img_ptr, min.x, y, c);
 		}
-		x++;
 	}
 }
 
-void			draw_polygone(void *img_ptr, t_circle c, int h, int color)
+void		draw_polygone(void *img_ptr, t_circle c, int h, int color)
 {
 	int		i;
 	t_coord	a;
@@ -89,7 +93,7 @@ void			draw_polygone(void *img_ptr, t_circle c, int h, int color)
 	}
 }
 
-void			draw_fpolygone(void *img_ptr, t_circle cl, int h, int c)
+void		draw_fpolygone(void *img_ptr, t_circle cl, int h, int c)
 {
 	(void)img_ptr;
 	(void)cl;

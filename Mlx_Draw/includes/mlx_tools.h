@@ -6,7 +6,7 @@
 /*   By: ghilbert <ghilbert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/15 11:28:30 by ghilbert          #+#    #+#             */
-/*   Updated: 2015/04/19 21:39:04 by ghilbert         ###   ########.fr       */
+/*   Updated: 2015/04/20 23:25:28 by ghilbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 
 # include "keys.h"
 # include "colors.h"
+# include "structs.h"
 # include "mlx.h"
 
 # include "libft.h"
@@ -28,63 +29,8 @@
 # define WIDTH	640
 # define HEIGHT	480
 
-#define max(a,b) \
-   ({ __typeof__ (a) _a = (a); \
-       __typeof__ (b) _b = (b); \
-     _a > _b ? _a : _b; })
-
-#define min(a,b) \
-   ({ __typeof__ (a) _a = (a); \
-       __typeof__ (b) _b = (b); \
-     _a < _b ? _a : _b; })
-
-typedef struct	s_image
-{
-	void		*img;
-
-	int			w;
-	int			h;
-
-	char		*data;
-	int			bpp;
-	int			sl;
-	int			end;
-}				t_image;
-
-typedef struct	s_coord
-{
-	int			x;
-	int			y;
-}				t_coord;
-
-typedef struct	s_circle
-{
-	t_coord		center;
-	int			radius;
-}				t_circle;
-
-typedef struct	s_line
-{
-	t_coord		p1;
-	t_coord		p2;
-}				t_line;
-typedef struct	s_env
-{
-	char		*exec_path;
-	char		*img_path;
-
-	void		*mlx;
-	void		*win;
-
-	void		*img;
-
-	char		*data;
-	int			bpp;
-	int			sl;
-	int			endian;
-
-	void		*img_font;
-}				t_env;
+# define MIN(x, y) (x < y ? x : y)
+# define MAX(x, y) (x > y ? x : y)
 
 /*
 ** hooks.c
@@ -99,12 +45,23 @@ void			draw(t_env *e);
 void			draw_win(t_env *e);
 
 /*
+** ft_maths.c
+*/
+t_coord			get_max(t_coord a, t_coord b);
+t_coord			get_min(t_coord a, t_coord b);
+/*
 ** utils.c
 */
 void			swap_coord(t_coord *a, t_coord *b);
 t_coord			coord(int x, int y);
 int				get_pxl_color(int c);
-t_coord				*intersect(t_line l1, t_line l2);
+t_box			boxing(t_coord a, t_coord b);
+t_line			line(t_coord a, t_coord b);
+
+/*
+** intersect.c
+*/
+int				intersect(t_line a, t_line b);
 
 /*
 ** init_path.c
@@ -114,13 +71,13 @@ void			init_path(t_env *e, char **env);
 /*
 ** img_pixel.c
 */
-void			mlx_pixel_put_img(void *img, size_t x, size_t y, int color);
+void			draw_pixel(void *img, size_t x, size_t y, int color);
 
 /*
 ** img_str.c
 */
 void			init_str(t_env *e);
-void			mlx_string_put_img(t_env *e, t_coord a, int color, char *str);
+void			draw_str(t_env *e, t_coord a, int color, char *str);
 
 /*
 ** img_circle.c

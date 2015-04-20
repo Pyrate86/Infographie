@@ -6,7 +6,7 @@
 /*   By: ghilbert <ghilbert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/15 11:52:32 by ghilbert          #+#    #+#             */
-/*   Updated: 2015/04/19 23:55:03 by ghilbert         ###   ########.fr       */
+/*   Updated: 2015/04/20 23:51:28 by ghilbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,24 +34,24 @@ void	draw(t_env *e)
 	draw_vline(e->img, coord((WIDTH / 2) / 2, HEIGHT / 2), HEIGHT -30, PURPLE);
 
 // img_pixel.c
-	mlx_pixel_put_img(e->img, (WIDTH / 2) / 2 - 1, HEIGHT / 2 - 1, BLACK);
-	mlx_pixel_put_img(e->img, (WIDTH / 2) / 2, HEIGHT / 2 - 1, BLACK);
-	mlx_pixel_put_img(e->img, (WIDTH / 2) / 2 + 1, HEIGHT / 2 - 1, BLACK);
+	draw_pixel(e->img, (WIDTH / 2) / 2 - 1, HEIGHT / 2 - 1, BLACK);
+	draw_pixel(e->img, (WIDTH / 2) / 2, HEIGHT / 2 - 1, BLACK);
+	draw_pixel(e->img, (WIDTH / 2) / 2 + 1, HEIGHT / 2 - 1, BLACK);
 
-	mlx_pixel_put_img(e->img, (WIDTH / 2) / 2 - 1, HEIGHT / 2, BLACK);
-	mlx_pixel_put_img(e->img, (WIDTH / 2) / 2, HEIGHT / 2, BLACK);
-	mlx_pixel_put_img(e->img, (WIDTH / 2) / 2 + 1, HEIGHT / 2, BLACK);
+	draw_pixel(e->img, (WIDTH / 2) / 2 - 1, HEIGHT / 2, BLACK);
+	draw_pixel(e->img, (WIDTH / 2) / 2, HEIGHT / 2, BLACK);
+	draw_pixel(e->img, (WIDTH / 2) / 2 + 1, HEIGHT / 2, BLACK);
 
-	mlx_pixel_put_img(e->img, (WIDTH / 2) / 2 - 1, HEIGHT / 2 + 1, BLACK);
-	mlx_pixel_put_img(e->img, (WIDTH / 2) / 2, HEIGHT / 2 + 1, BLACK);
-	mlx_pixel_put_img(e->img, (WIDTH / 2) / 2 + 1, HEIGHT / 2 + 1, BLACK);
+	draw_pixel(e->img, (WIDTH / 2) / 2 - 1, HEIGHT / 2 + 1, BLACK);
+	draw_pixel(e->img, (WIDTH / 2) / 2, HEIGHT / 2 + 1, BLACK);
+	draw_pixel(e->img, (WIDTH / 2) / 2 + 1, HEIGHT / 2 + 1, BLACK);
 
 // img_str.c
-	mlx_string_put_img(e, coord(30, HEIGHT - 20 - 30), BLACK, "Black");
-	mlx_string_put_img(e, coord(90, HEIGHT - 20 - 30), DARKGREY, "DkGr");
-	mlx_string_put_img(e, coord(140, HEIGHT - 20 - 30), GREY, "Grey");
-	mlx_string_put_img(e, coord(190, HEIGHT - 20 - 30), LIGHTGREY, "LgGr");
-	mlx_string_put_img(e, coord(240, HEIGHT - 20 - 30), WHITE, "White");
+	draw_str(e, coord(30, HEIGHT - 20 - 30), BLACK, "Black");
+	draw_str(e, coord(90, HEIGHT - 20 - 30), DARKGREY, "DkGr");
+	draw_str(e, coord(140, HEIGHT - 20 - 30), GREY, "Grey");
+	draw_str(e, coord(190, HEIGHT - 20 - 30), LIGHTGREY, "LgGr");
+	draw_str(e, coord(240, HEIGHT - 20 - 30), WHITE, "White");
 
 // alpha_mask.c
 	t_image	*rei;
@@ -87,19 +87,33 @@ void	draw(t_env *e)
 	pts[2] = coord(40, 60);
 	pts[3] = coord(100, 60);
 	pts[4] = coord(50, 100);
-	draw_poly_from_pts(e->img, pts, 5, BLUE);
+	draw_fpoly_from_pts(e->img, pts, 5, RED);
 	pts[0] = coord(130, 40);
 	pts[1] = coord(100, 60);
 	pts[2] = coord(110, 100);
 	pts[3] = coord(150, 100);
 	pts[4] = coord(160, 60);
-	draw_fpoly_from_pts(e->img, pts, 5, BLUE);
-
+	draw_poly_from_pts(e->img, pts, 5, DARKBLUE);
+	
 	circle.center = coord(190, 70);
 	circle.radius = 30;
+	draw_circle(e->img, circle, YELLOW);
 	draw_polygone(e->img, circle, 3, PURPLE);
 	circle.center = coord(250, 70);
+	draw_circle(e->img, circle, RED);
 	draw_polygone(e->img, circle, 4, BLUE);
+
+	// t_line a, b;
+	// a = line(coord(30, 120), coord(20, 10));
+	// b = line(coord(50, 50), coord(10, 60));
+	// int tmp = intersect(a, b);
+
+	// // draw_fsquare(e->img, coord(39, 49), coord(41, 51), BLUE);
+	// draw_line(e->img, a.p1, a.p2, BLUE);
+	// draw_line(e->img, b.p1, b.p2, DARKBLUE);
+
+	// if (tmp)
+	// 	ft_putstr("\nintersect");
 }
 
 void	draw_win(t_env *e)

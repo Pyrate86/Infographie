@@ -6,13 +6,13 @@
 /*   By: ghilbert <ghilbert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/15 14:21:10 by ghilbert          #+#    #+#             */
-/*   Updated: 2015/04/19 17:07:47 by ghilbert         ###   ########.fr       */
+/*   Updated: 2015/04/20 17:16:18 by ghilbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mlx_tools.h"
 
-static void	draw_pixel(t_env *e, t_coord center, t_coord a, int color)
+static void	draw_cpixel(t_env *e, t_coord center, t_coord a, int color)
 {
 	mlx_pixel_put(e->mlx, e->win, center.x + a.x, center.y + a.y, color);
 	mlx_pixel_put(e->mlx, e->win, center.x + a.y, center.y + a.x, color);
@@ -35,7 +35,7 @@ void		draw_win_circle(t_env *e, t_circle c, int color)
 	d = c.radius - 1;
 	while (y >= x)
 	{
-		draw_pixel(e, c.center, coord(x, y), color);
+		draw_cpixel(e, c.center, coord(x, y), color);
 		if (d >= 2 * x)
 			d = d - (2 * x++) - 1;
 		else if (d < 2 * (c.radius - y))

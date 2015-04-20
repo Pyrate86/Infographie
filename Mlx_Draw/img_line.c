@@ -6,7 +6,7 @@
 /*   By: ghilbert <ghilbert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/15 13:21:02 by ghilbert          #+#    #+#             */
-/*   Updated: 2015/04/15 14:33:14 by ghilbert         ###   ########.fr       */
+/*   Updated: 2015/04/20 17:15:14 by ghilbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	draw_line(void *img_ptr, t_coord a, t_coord b, int color)
 		{
 			div = b.y - a.y == 0 ? 1 : b.y - a.y;
 			x = a.x + ((b.x - a.x) * (y - a.y)) / div;
-			mlx_pixel_put_img(img_ptr, x, y, color);
+			draw_pixel(img_ptr, x, y, color);
 		}
 	}
 	if (a.x > b.x)
@@ -37,7 +37,7 @@ void	draw_line(void *img_ptr, t_coord a, t_coord b, int color)
 	{
 		div = b.x - a.x == 0 ? 1 : b.x - a.x;
 		y = a.y + ((b.y - a.y) * (x - a.x)) / div;
-		mlx_pixel_put_img(img_ptr, x, y, color);
+		draw_pixel(img_ptr, x, y, color);
 	}
 }
 

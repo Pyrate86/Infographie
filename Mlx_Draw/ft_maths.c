@@ -1,31 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   img_pixel.c                                        :+:      :+:    :+:   */
+/*   ft_maths.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ghilbert <ghilbert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/04/15 13:29:51 by ghilbert          #+#    #+#             */
-/*   Updated: 2015/04/20 17:15:13 by ghilbert         ###   ########.fr       */
+/*   Created: 2015/04/20 19:27:49 by ghilbert          #+#    #+#             */
+/*   Updated: 2015/04/20 23:53:09 by ghilbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mlx_tools.h"
 
-void	draw_pixel(void *img, size_t x, size_t y, int color)
+t_coord	get_max(t_coord a, t_coord b)
 {
-	char	*data;
-	int		bbp;
-	int		sizeline;
-	int		endian;
-	int		i;
+	t_coord max;
 
-	data = mlx_get_data_addr(img, &bbp, &sizeline, &endian);
-	bbp /= 8;
-	i = x * bbp + y * sizeline;
-	if (WIDTH * bbp + HEIGHT * sizeline < i)
-		return ;
-	data[i] = color;
-	data[i + 1] = color >> 8;
-	data[i + 2] = color >> 16;
+	max.x = MAX(a.x, b.x);
+	max.y = MAX(a.y, b.y);
+	return (max);
+}
+
+t_coord	get_min(t_coord a, t_coord b)
+{
+	t_coord min;
+
+	min.x = MIN(a.x, b.x);
+	min.y = MIN(a.y, b.y);
+	return (min);
 }
