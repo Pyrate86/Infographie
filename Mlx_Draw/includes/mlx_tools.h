@@ -6,31 +6,14 @@
 /*   By: ghilbert <ghilbert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/15 11:28:30 by ghilbert          #+#    #+#             */
-/*   Updated: 2015/04/21 14:31:52 by ghilbert         ###   ########.fr       */
+/*   Updated: 2015/04/21 19:06:25 by ghilbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MLX_TOOLS_H
 # define MLX_TOOLS_H
 
-# include <unistd.h>
-# include <stdlib.h>
-
-# include <math.h>
-# include <limits.h>
-
-# include "keys.h"
-# include "colors.h"
-# include "structs.h"
-# include "mlx.h"
-
-# include "libft.h"
-
-# define WIDTH	640
-# define HEIGHT	480
-
-# define MIN(x, y) (x < y ? x : y)
-# define MAX(x, y) (x > y ? x : y)
+# include "includes.h"
 
 /*
 ** hooks.c
@@ -87,6 +70,11 @@ void			draw_circle(void *img_ptr, t_circle c, int color);
 void			draw_fcircle(void *img_ptr, t_circle c, int color);
 
 /*
+** img_image
+*/
+void			draw_image(void *img_bg, t_image *fg, t_coord t);
+
+/*
 ** img_lines.c
 */
 void			draw_line(void *img_ptr, t_coord a, t_coord b, int color);
@@ -106,6 +94,11 @@ void			draw_poly_from_pts(void *img_ptr, t_coord *pts, int h, int c);
 void			draw_fpoly_from_pts(void *img_ptr, t_coord *pts, int h, int c);
 void			draw_polygone(void *img_ptr, t_circle c, int h, int color);
 void			draw_fpolygone(void *img_ptr, t_circle c, int h, int color);
+
+/*
+** img_rotation
+*/
+t_image			*rotation(t_env *e, t_image *img, int angle, int color);
 
 /*
 ** win_circle.c
@@ -129,7 +122,6 @@ void			draw_win_fsquare(t_env *e, t_coord a, t_coord b, int color);
 /*
 ** win_polygone.c
 */
-
 void			draw_win_poly_from_pts(t_env *e, t_coord *pts, int h, int c);
 void			draw_win_fpoly_from_pts(t_env *e, t_coord *pts, int h, int c);
 void			draw_win_polygone(t_env *e, t_circle c, int h, int color);
@@ -150,4 +142,5 @@ void			draw_opacity(void *img_bg, t_image *fg, t_coord tl, float op);
 */
 void			draw_luminosity(void *img_bg, t_image *fg, t_coord t, float l);
 void			set_luminosity(t_image *img, float lum);
+
 #endif

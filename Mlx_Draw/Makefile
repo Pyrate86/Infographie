@@ -6,7 +6,7 @@
 #    By: ghilbert <ghilbert@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/11/29 15:35:12 by ghilbert          #+#    #+#              #
-#    Updated: 2015/04/21 14:28:02 by ghilbert         ###   ########.fr        #
+#    Updated: 2015/04/21 16:49:41 by ghilbert         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,9 +22,11 @@ SRC_NAME	=	alpha_mask.c \
 				ft_maths.c \
 				hooks.c \
 				img_cicrle.c \
+				img_image.c \
 				img_line.c \
 				img_pixel.c \
 				img_polygone.c \
+				img_rotation.c \
 				img_square.c \
 				img_str.c \
 				init_path.c \
@@ -38,9 +40,11 @@ SRC_NAME	=	alpha_mask.c \
 				win_polygone.c \
 				win_square.c
 
-HEADER 		=	$(INC_PATH)mlx_tools.h \
-				$(INC_PATH)colors.h \
+HEADER 		=	$(INC_PATH)colors.h \
+				$(INC_PATH)defines.h \
+				$(INC_PATH)includes.h \
 				$(INC_PATH)keys.h \
+				$(INC_PATH)mlx_tools.h \
 				$(INC_PATH)structs.h
 
 LIBFT_PATH	= libft

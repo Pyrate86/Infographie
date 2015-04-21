@@ -1,36 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hooks.c                                            :+:      :+:    :+:   */
+/*   includes.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ghilbert <ghilbert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/04/15 11:34:01 by ghilbert          #+#    #+#             */
-/*   Updated: 2015/04/21 16:49:01 by ghilbert         ###   ########.fr       */
+/*   Created: 2015/04/21 14:50:49 by ghilbert          #+#    #+#             */
+/*   Updated: 2015/04/21 14:52:04 by ghilbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mlx_tools.h"
+#ifndef INCLUDES_H
+# define INCLUDES_H
 
-static void		redraw(t_env *e)
-{
-	mlx_destroy_image(e->mlx, e->img);
-	e->img = mlx_new_image(e->mlx, WIDTH, HEIGHT);
-	draw(e);
-	mlx_put_image_to_window(e->mlx, e->win, e->img, 0, 0);
-	draw_win(e);
-}
+# include <unistd.h>
+# include <stdlib.h>
+# include <math.h>
+# include <limits.h>
 
-int				key_hook(int k, t_env *e)
-{
-	if (k == ESC)
-		exit (0);
-	redraw(e);
-	return (k);
-}
+# include "keys.h"
+# include "colors.h"
+# include "structs.h"
+# include "mlx.h"
+# include "defines.h"
 
-int				expose_hook(t_env *e)
-{
-	redraw(e);
-	return (0);
-}
+# include "libft.h"
+
+#endif

@@ -6,7 +6,7 @@
 /*   By: ghilbert <ghilbert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/15 11:52:32 by ghilbert          #+#    #+#             */
-/*   Updated: 2015/04/21 14:40:31 by ghilbert         ###   ########.fr       */
+/*   Updated: 2015/04/21 19:10:16 by ghilbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,6 +114,15 @@ void	draw(t_env *e)
 
 	// if (tmp)
 	// 	ft_putstr("\nintersect");
+
+	t_image *rot;
+
+	rot = rotation(e, rei, 146, PURPLE);
+	// mlx_put_image_to_window(e->mlx, e->win, rot->img, 20, 20);
+	// draw_image(e->img, rot, coord(WIDTH / 4, HEIGHT / 2));
+	draw_aplha_mask(e->img, rot, coord(WIDTH / 4, HEIGHT / 2), PURPLE);
+	// draw_aplha_mask(e->img, rot, coord(WIDTH / 4, HEIGHT / 2), BLACK);
+
 }
 
 void	draw_win(t_env *e)

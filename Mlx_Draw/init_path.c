@@ -6,7 +6,7 @@
 /*   By: ghilbert <ghilbert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/16 15:12:09 by ghilbert          #+#    #+#             */
-/*   Updated: 2015/04/19 15:30:17 by ghilbert         ###   ########.fr       */
+/*   Updated: 2015/04/21 14:49:23 by ghilbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ void	init_path(t_env *e, char **env)
 		path = ft_strjoin(path, tmp[i]);
 		i++;
 	}
-	exec = ft_strjoin(path, "/../includes/font.xpm");
-	img = ft_strjoin(path, "/../img/");
+	exec = ft_strjoin(path, FONT_PATH);
+	img = ft_strjoin(path, IMG_PATH);
 	e->exec_path = exec;
 	e->img_path = img;
 }
