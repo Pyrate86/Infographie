@@ -6,7 +6,7 @@
 /*   By: ghilbert <ghilbert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/20 15:02:38 by ghilbert          #+#    #+#             */
-/*   Updated: 2015/04/20 23:53:24 by ghilbert         ###   ########.fr       */
+/*   Updated: 2015/04/21 14:24:38 by ghilbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,10 +93,25 @@ void		draw_polygone(void *img_ptr, t_circle c, int h, int color)
 	}
 }
 
-void		draw_fpolygone(void *img_ptr, t_circle cl, int h, int c)
+void		draw_fpolygone(void *img_ptr, t_circle c, int h, int color)
 {
-	(void)img_ptr;
-	(void)cl;
-	(void)h;
-	(void)c;
+	int		i;
+	t_coord	a;
+	t_coord	b;
+	t_coord *pts;
+
+	i = 0;
+	pts = (t_coord *)malloc(sizeof(t_coord) * h);
+	while (i < h)
+	{
+		a.x = c.radius * cos(2 * M_PI * i / h - (M_PI / 2)) + c.center.x;
+		a.y = c.radius * sin(2 * M_PI * i / h - (M_PI / 2)) + c.center.y;
+		b.x = c.radius * cos(2 * M_PI * (i + 1) / h - (M_PI / 2)) + c.center.x;
+		b.y = c.radius * sin(2 * M_PI * (i + 1) / h - (M_PI / 2)) + c.center.y;
+		if (i == 0)
+			pts[i] = a;
+		pts[i + 1] = b;
+		i++;
+	}
+	draw_fpoly_from_pts(img_ptr, pts, h, color);
 }

@@ -6,7 +6,7 @@
 /*   By: ghilbert <ghilbert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/15 11:28:30 by ghilbert          #+#    #+#             */
-/*   Updated: 2015/04/20 23:25:28 by ghilbert         ###   ########.fr       */
+/*   Updated: 2015/04/21 14:20:17 by ghilbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ void			draw_win(t_env *e);
 */
 t_coord			get_max(t_coord a, t_coord b);
 t_coord			get_min(t_coord a, t_coord b);
+
 /*
 ** utils.c
 */

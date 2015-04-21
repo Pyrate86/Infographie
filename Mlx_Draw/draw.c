@@ -6,7 +6,7 @@
 /*   By: ghilbert <ghilbert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/15 11:52:32 by ghilbert          #+#    #+#             */
-/*   Updated: 2015/04/20 23:51:28 by ghilbert         ###   ########.fr       */
+/*   Updated: 2015/04/21 14:23:30 by ghilbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ void	draw(t_env *e)
 	draw_polygone(e->img, circle, 3, PURPLE);
 	circle.center = coord(250, 70);
 	draw_circle(e->img, circle, RED);
-	draw_polygone(e->img, circle, 4, BLUE);
+	draw_fpolygone(e->img, circle, 4, BLUE);
 
 	// t_line a, b;
 	// a = line(coord(30, 120), coord(20, 10));
