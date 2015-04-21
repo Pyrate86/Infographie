@@ -6,7 +6,7 @@
 #    By: ghilbert <ghilbert@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/11/29 15:35:12 by ghilbert          #+#    #+#              #
-#    Updated: 2015/04/20 23:16:21 by ghilbert         ###   ########.fr        #
+#    Updated: 2015/04/21 14:28:02 by ghilbert         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,6 +35,7 @@ SRC_NAME	=	alpha_mask.c \
 				utils.c \
 				win_circle.c \
 				win_line.c \
+				win_polygone.c \
 				win_square.c
 
 HEADER 		=	$(INC_PATH)mlx_tools.h \

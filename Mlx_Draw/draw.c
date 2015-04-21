@@ -6,7 +6,7 @@
 /*   By: ghilbert <ghilbert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/15 11:52:32 by ghilbert          #+#    #+#             */
-/*   Updated: 2015/04/21 14:23:30 by ghilbert         ###   ########.fr       */
+/*   Updated: 2015/04/21 14:40:31 by ghilbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,13 +87,13 @@ void	draw(t_env *e)
 	pts[2] = coord(40, 60);
 	pts[3] = coord(100, 60);
 	pts[4] = coord(50, 100);
-	draw_fpoly_from_pts(e->img, pts, 5, RED);
+	draw_poly_from_pts(e->img, pts, 5, RED);
 	pts[0] = coord(130, 40);
 	pts[1] = coord(100, 60);
 	pts[2] = coord(110, 100);
 	pts[3] = coord(150, 100);
 	pts[4] = coord(160, 60);
-	draw_poly_from_pts(e->img, pts, 5, DARKBLUE);
+	draw_fpoly_from_pts(e->img, pts, 5, DARKBLUE);
 	
 	circle.center = coord(190, 70);
 	circle.radius = 30;
@@ -151,6 +151,31 @@ void	draw_win(t_env *e)
 
 // String
 	mlx_string_put(e->mlx, e->win, (3 * (WIDTH / 4) - 17), 40, GREY, "WINDOW");
+
+// win_polygone.c
+	t_coord	*pts;
+
+	pts = (t_coord *)malloc(sizeof(t_coord) * 5);
+	pts[0] = coord(WIDTH - 70, HEIGHT - 40);
+	pts[1] = coord(WIDTH - 90, HEIGHT - 100);
+	pts[2] = coord(WIDTH - 40, HEIGHT - 60);
+	pts[3] = coord(WIDTH - 100, HEIGHT - 60);
+	pts[4] = coord(WIDTH - 50, HEIGHT - 100);
+	draw_win_fpoly_from_pts(e, pts, 5, RED);
+	pts[0] = coord(WIDTH - 130, HEIGHT - 40);
+	pts[1] = coord(WIDTH - 100, HEIGHT - 60);
+	pts[2] = coord(WIDTH - 110, HEIGHT - 100);
+	pts[3] = coord(WIDTH - 150, HEIGHT - 100);
+	pts[4] = coord(WIDTH - 160, HEIGHT - 60);
+	draw_win_poly_from_pts(e, pts, 5, DARKBLUE);
+	
+	circle.center = coord(WIDTH - 190, HEIGHT - 70);
+	circle.radius = 30;
+	draw_win_circle(e, circle, YELLOW);
+	draw_win_fpolygone(e, circle, 3, PURPLE);
+	circle.center = coord(WIDTH - 250, HEIGHT - 70);
+	draw_win_circle(e, circle, RED);
+	draw_win_polygone(e, circle, 4, BLACK);
 
 (void)e;
 }

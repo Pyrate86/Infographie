@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   img_polygone.c                                     :+:      :+:    :+:   */
+/*   win_polygone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ghilbert <ghilbert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/04/20 15:02:38 by ghilbert          #+#    #+#             */
-/*   Updated: 2015/04/21 14:42:44 by ghilbert         ###   ########.fr       */
+/*   Created: 2015/04/21 14:27:30 by ghilbert          #+#    #+#             */
+/*   Updated: 2015/04/21 14:35:19 by ghilbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,19 +34,19 @@ static int	is_in_poly(t_coord pt, t_coord *pts, int h)
 	return (0);
 }
 
-void		draw_poly_from_pts(void *img_ptr, t_coord *pts, int h, int c)
+void		draw_win_poly_from_pts(t_env *e, t_coord *pts, int h, int c)
 {
 	int	i;
 
 	i = 0;
 	while (i < h)
 	{
-		draw_line(img_ptr, pts[i], pts[i == h - 1 ? 0 : i + 1], c);
+		draw_win_line(e, pts[i], pts[i == h - 1 ? 0 : i + 1], c);
 		i++;
 	}
 }
 
-void		draw_fpoly_from_pts(void *img_ptr, t_coord *pts, int h, int c)
+void		draw_win_fpoly_from_pts(t_env *e, t_coord *pts, int h, int c)
 {
 	int		i;
 	int		y;
@@ -70,12 +70,12 @@ void		draw_fpoly_from_pts(void *img_ptr, t_coord *pts, int h, int c)
 		while (y++ <= max.y)
 		{
 			if (is_in_poly(coord(min.x, y), pts, h))
-				draw_pixel(img_ptr, min.x, y, c);
+				mlx_pixel_put(e->mlx, e->win, min.x, y, c);
 		}
 	}
 }
 
-void		draw_polygone(void *img_ptr, t_circle c, int h, int color)
+void		draw_win_polygone(t_env *e, t_circle c, int h, int color)
 {
 	int		i;
 	t_coord	a;
@@ -88,12 +88,12 @@ void		draw_polygone(void *img_ptr, t_circle c, int h, int color)
 		a.y = c.radius * sin(2 * M_PI * i / h - (M_PI / 2)) + c.center.y;
 		b.x = c.radius * cos(2 * M_PI * (i + 1) / h - (M_PI / 2)) + c.center.x;
 		b.y = c.radius * sin(2 * M_PI * (i + 1) / h - (M_PI / 2)) + c.center.y;
-		draw_line(img_ptr, a, b, color);
+		draw_win_line(e, a, b, color);
 		i++;
 	}
 }
 
-void		draw_fpolygone(void *img_ptr, t_circle c, int h, int color)
+void		draw_win_fpolygone(t_env *e, t_circle c, int h, int color)
 {
 	int		i;
 	t_coord	a;
@@ -113,5 +113,5 @@ void		draw_fpolygone(void *img_ptr, t_circle c, int h, int color)
 		pts[i + 1] = b;
 		i++;
 	}
-	draw_fpoly_from_pts(img_ptr, pts, h, color);
+	draw_win_fpoly_from_pts(e, pts, h, color);
 }

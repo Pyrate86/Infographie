@@ -6,7 +6,7 @@
 /*   By: ghilbert <ghilbert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/15 11:28:30 by ghilbert          #+#    #+#             */
-/*   Updated: 2015/04/21 14:20:17 by ghilbert         ###   ########.fr       */
+/*   Updated: 2015/04/21 14:31:52 by ghilbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,7 @@ void			draw_poly_from_pts(void *img_ptr, t_coord *pts, int h, int c);
 void			draw_fpoly_from_pts(void *img_ptr, t_coord *pts, int h, int c);
 void			draw_polygone(void *img_ptr, t_circle c, int h, int color);
 void			draw_fpolygone(void *img_ptr, t_circle c, int h, int color);
+
 /*
 ** win_circle.c
 */
@@ -124,6 +125,15 @@ void			draw_win_vline(t_env *e, t_coord a, int w, int color);
 */
 void			draw_win_square(t_env *e, t_coord a, t_coord b, int color);
 void			draw_win_fsquare(t_env *e, t_coord a, t_coord b, int color);
+
+/*
+** win_polygone.c
+*/
+
+void			draw_win_poly_from_pts(t_env *e, t_coord *pts, int h, int c);
+void			draw_win_fpoly_from_pts(t_env *e, t_coord *pts, int h, int c);
+void			draw_win_polygone(t_env *e, t_circle c, int h, int color);
+void			draw_win_fpolygone(t_env *e, t_circle c, int h, int color);
 
 /*
 ** alpha_mask.c
