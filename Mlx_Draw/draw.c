@@ -6,7 +6,7 @@
 /*   By: ghilbert <ghilbert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/15 11:52:32 by ghilbert          #+#    #+#             */
-/*   Updated: 2015/04/21 19:10:16 by ghilbert         ###   ########.fr       */
+/*   Updated: 2015/04/22 14:56:42 by ghilbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,25 +103,11 @@ void	draw(t_env *e)
 	draw_circle(e->img, circle, RED);
 	draw_fpolygone(e->img, circle, 4, BLUE);
 
-	// t_line a, b;
-	// a = line(coord(30, 120), coord(20, 10));
-	// b = line(coord(50, 50), coord(10, 60));
-	// int tmp = intersect(a, b);
-
-	// // draw_fsquare(e->img, coord(39, 49), coord(41, 51), BLUE);
-	// draw_line(e->img, a.p1, a.p2, BLUE);
-	// draw_line(e->img, b.p1, b.p2, DARKBLUE);
-
-	// if (tmp)
-	// 	ft_putstr("\nintersect");
-
+// img_rotation
 	t_image *rot;
 
-	rot = rotation(e, rei, 146, PURPLE);
-	// mlx_put_image_to_window(e->mlx, e->win, rot->img, 20, 20);
-	// draw_image(e->img, rot, coord(WIDTH / 4, HEIGHT / 2));
-	draw_aplha_mask(e->img, rot, coord(WIDTH / 4, HEIGHT / 2), PURPLE);
-	// draw_aplha_mask(e->img, rot, coord(WIDTH / 4, HEIGHT / 2), BLACK);
+	rot = rotation(e, rei, 90, PURPLE);
+	draw_image(e->img, rot, coord(WIDTH / 4 - rei->w / 2, HEIGHT / 4));
 
 }
 

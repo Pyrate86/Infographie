@@ -6,12 +6,12 @@
 /*   By: ghilbert <ghilbert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/21 14:47:32 by ghilbert          #+#    #+#             */
-/*   Updated: 2015/04/21 14:50:25 by ghilbert         ###   ########.fr       */
+/*   Updated: 2015/04/22 14:59:18 by ghilbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DEFINE_H
-# define DEFINE_H
+#ifndef DEFINES_H
+# define DEFINES_H
 
 # define WIDTH	640
 # define HEIGHT	480

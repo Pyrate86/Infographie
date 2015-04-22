@@ -6,59 +6,78 @@
 /*   By: ghilbert <ghilbert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/21 15:08:53 by ghilbert          #+#    #+#             */
-/*   Updated: 2015/04/21 19:09:41 by ghilbert         ###   ########.fr       */
+/*   Updated: 2015/04/22 14:58:59 by ghilbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mlx_tools.h"
-#include <stdio.h>
-t_image	*rotation(t_env *e, t_image *img, int angle, int color)
+
+static t_image	*new_rt(t_env *e, t_image *img)
 {
-	t_image	*res;
-	int		x;
-	int		y;
-	int		x2;
-	int		y2;
-	float	cosinus;
-	float	sinus;
+	t_image *rt;
+
+	rt = (t_image *)malloc(sizeof(t_image));
+	rt->img = mlx_new_image(e->mlx, img->w, img->h);
+	rt->w = img->w;
+	rt->h = img->h;
+	rt->data = mlx_get_data_addr(rt->img, &(rt->bpp), &(rt->sl), &(rt->end));
+	return (rt);
+}
+
+static t_coord	pixel_pos(int angle, t_coord loop, t_coord center)
+{
+	t_coord	pxl;
+
+	pxl.x = cos(angle * M_PI / 180) * (loop.x - center.x);
+	pxl.x = pxl.x - sin(angle * M_PI / 180) * (loop.y - center.y) + center.x;
+	pxl.y = sin(angle * M_PI / 180) * (loop.x - center.x);
+	pxl.y += cos(angle * M_PI / 180) * (loop.y - center.y) + center.y;
+	return (pxl);
+}
+
+static void		put_pixel(t_image *rt, t_image *img, t_coord loop, t_coord pxl)
+{
+	int	i;
+	int	j;
+
+	i = (loop.x * (rt->bpp / 8)) + (loop.y * rt->sl);
+	j = (pxl.x * (img->bpp / 8)) + (pxl.y * img->sl);
+	rt->data[i] = img->data[j];
+	rt->data[i + 1] = img->data[j + 1];
+	rt->data[i + 2] = img->data[j + 2];
+}
+
+static void		put_color_pixel(t_image *rt, t_coord loop, int color)
+{
+	int	i;
+
+	i = (loop.x * (rt->bpp / 8)) + (loop.y * rt->sl);
+	rt->data[i] = color;
+	rt->data[i + 1] = color >> 8;
+	rt->data[i + 2] = color >> 16;
+}
+
+t_image			*rotation(t_env *e, t_image *img, int angle, int color)
+{
+	t_image	*rt;
+	t_coord	loop;
+	t_coord pxl;
 	t_coord	center;
-(void)e;
 
-	res = (t_image *)malloc(sizeof(t_image));
-	res->img = mlx_new_image(e->mlx, img->w, img->h);
-	res->w = img->w;
-	res->h = img->h;
-	res->data = mlx_get_data_addr(res->img, &(res->bpp), &(res->sl), &(res->end));
-	center.x = img->w / 2;
-	center.y = img->h / 2;
-	cosinus = cos(angle * M_PI / 180);
-	sinus = sin(angle * M_PI / 180);
-	x= 0;
-
-	while (x < res->w)
+	rt = new_rt(e, img);
+	center = coord(img->w / 2, img->h / 2);
+	loop.x = -1;
+	while (++loop.x < rt->w)
 	{
-		y = 0;
-		while (y < res->h)
+		loop.y = -1;
+		while (++loop.y < rt->h)
 		{
-			x2 = cosinus * (x - center.x) - sinus * (y - center.y) + center.x;
-			y2 = sinus * (x - center.x) + cosinus * (y - center.y) + center.y;
-			int i = (x  * (res->bpp / 8)) + (y * res->sl);
-			if (x2 < img->w && x2 >0 && y2 >0 && y2 < img->h)
-			{
-				int j = (x2 * (img->bpp / 8)) + (y2 * img->sl);
-				res->data[i] = img->data[j];
-				res->data[i + 1] = img->data[j + 1];
-				res->data[i + 2] = img->data[j + 2];
-			}
+			pxl = pixel_pos(angle, loop, center);
+			if (pxl.x < img->w && pxl.x > 0 && pxl.y > 0 && pxl.y < img->h)
+				put_pixel(rt, img, loop, pxl);
 			else
-			{
-				res->data[i] = color;
-				res->data[i + 1] = color >> 8;
-				res->data[i + 2] = color >> 16;
-			}
-			y++;
+				put_color_pixel(rt, loop, color);
 		}
-		x++;
 	}
-	return (res);
+	return (rt);
 }
