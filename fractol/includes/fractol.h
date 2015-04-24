@@ -6,7 +6,7 @@
 /*   By: ghilbert <ghilbert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/14 00:52:02 by ghilbert          #+#    #+#             */
-/*   Updated: 2014/12/14 00:52:04 by ghilbert         ###   ########.fr       */
+/*   Updated: 2015/04/24 17:20:17 by ghilbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,6 @@
 
 # include "mlx.h"
 # include "libft.h"
-
-# include <stdio.h>
 
 # define WIDTH 640
 # define HEIGHT 640

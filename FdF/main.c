@@ -6,7 +6,7 @@
 /*   By: ghilbert <ghilbert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/30 04:14:08 by ghilbert          #+#    #+#             */
-/*   Updated: 2014/12/30 04:14:18 by ghilbert         ###   ########.fr       */
+/*   Updated: 2015/04/24 12:50:35 by ghilbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static int	get_arg(t_env *e, char **av)
 	return (1);
 }
 
-int	main(int ac, char **av)
+int			main(int ac, char **av)
 {
 	t_env	e;
 
