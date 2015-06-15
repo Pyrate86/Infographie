@@ -6,7 +6,7 @@
 /*   By: ghilbert <ghilbert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/15 11:34:01 by ghilbert          #+#    #+#             */
-/*   Updated: 2015/04/21 16:49:01 by ghilbert         ###   ########.fr       */
+/*   Updated: 2015/06/06 19:58:53 by ghilbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static void		redraw(t_env *e)
 
 int				key_hook(int k, t_env *e)
 {
-	if (k == ESC)
+	if (k == KEY_ESCAPE)
 		exit (0);
 	redraw(e);
 	return (k);
@@ -32,5 +32,28 @@ int				key_hook(int k, t_env *e)
 int				expose_hook(t_env *e)
 {
 	redraw(e);
+	return (0);
+}
+
+#include <stdio.h>
+
+int		mouse_hook(int button, int x, int y, t_env *e)
+{
+	(void)button;
+	(void)x;
+	(void)y;
+	(void)e;
+
+	// redraw(e);
+	return (0);
+}
+
+int		mouse_motion(int x, int y, t_env *e)
+{
+	(void)x;
+	(void)y;
+	(void)e;
+
+//	redraw(e);
 	return (0);
 }

@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ghilbert <ghilbert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/04/15 11:28:30 by ghilbert          #+#    #+#             */
-/*   Updated: 2015/04/21 19:06:25 by ghilbert         ###   ########.fr       */
+/*   Created: 2015/06/06 15:42:43 by ghilbert          #+#    #+#             */
+/*   Updated: 2015/06/06 19:58:14 by ghilbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@
 */
 int				key_hook(int k, t_env *e);
 int				expose_hook(t_env *e);
+int				mouse_hook(int button, int x, int y, t_env *e);
+int				mouse_motion(int x, int y, t_env *e);
 
 /*
 ** draw.c
@@ -50,7 +52,7 @@ int				intersect(t_line a, t_line b);
 /*
 ** init_path.c
 */
-void			init_path(t_env *e, char **env);
+void			init_path(t_env *e);
 
 /*
 ** img_pixel.c
@@ -96,7 +98,7 @@ void			draw_polygone(void *img_ptr, t_circle c, int h, int color);
 void			draw_fpolygone(void *img_ptr, t_circle c, int h, int color);
 
 /*
-** img_rotation
+** img_rotation.c
 */
 t_image			*rotation(t_env *e, t_image *img, int angle, int color);
 

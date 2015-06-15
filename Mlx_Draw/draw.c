@@ -6,14 +6,15 @@
 /*   By: ghilbert <ghilbert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/15 11:52:32 by ghilbert          #+#    #+#             */
-/*   Updated: 2015/04/22 14:56:42 by ghilbert         ###   ########.fr       */
+/*   Updated: 2015/06/06 19:58:00 by ghilbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mlx_tools.h"
 
 void	draw(t_env *e)
-{	
+{
+//*
 // square.c
 	draw_square(e->img, coord(10, 10), coord((WIDTH / 2) - 10, HEIGHT - 10), BLUE);
 	draw_fsquare(e->img, coord(30, 30), coord((WIDTH / 2) - 30, HEIGHT - 30), GREEN);
@@ -109,10 +110,13 @@ void	draw(t_env *e)
 	rot = rotation(e, rei, 90, PURPLE);
 	draw_image(e->img, rot, coord(WIDTH / 4 - rei->w / 2, HEIGHT / 4));
 
+//*/
+
 }
 
 void	draw_win(t_env *e)
 {
+//*
 // win_square.c
 	draw_win_square(e, coord((WIDTH / 2) + 10, 10), coord(WIDTH - 10, HEIGHT - 10), BLUE);
 	draw_win_fsquare(e, coord((WIDTH / 2) + 30, 30), coord(WIDTH - 30, HEIGHT - 30), GREEN);
@@ -172,5 +176,6 @@ void	draw_win(t_env *e)
 	draw_win_circle(e, circle, RED);
 	draw_win_polygone(e, circle, 4, BLACK);
 
-(void)e;
+//*/
+	(void)e;
 }

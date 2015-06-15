@@ -6,25 +6,22 @@
 /*   By: ghilbert <ghilbert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/16 15:12:09 by ghilbert          #+#    #+#             */
-/*   Updated: 2015/04/21 14:49:23 by ghilbert         ###   ########.fr       */
+/*   Updated: 2015/06/06 19:21:46 by ghilbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mlx_tools.h"
 
-void	init_path(t_env *e, char **env)
+void	init_path(t_env *e)
 {
 	int		i;
 	char	**tmp;
 	char	*path;
+
 	char	*exec;
 	char	*img;
 
-	i = 0;
-	while (!(env[i][0] == '_' && env[i][1] == '='))
-		i++;
-	tmp = ft_strsplit(env[i], '=');
-	tmp = ft_strsplit(tmp[1], '/');
+	tmp = ft_strsplit(getenv("_"), '/');
 	i = 0;
 	path = tmp[0][0] == '.' ? tmp[i++] : "";
 	while (tmp[i + 1])

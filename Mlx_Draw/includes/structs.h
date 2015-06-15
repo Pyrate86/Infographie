@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ghilbert <ghilbert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/04/20 23:08:41 by ghilbert          #+#    #+#             */
-/*   Updated: 2015/04/20 23:53:32 by ghilbert         ###   ########.fr       */
+/*   Created: 2015/06/06 19:16:13 by ghilbert          #+#    #+#             */
+/*   Updated: 2015/06/06 19:48:25 by ghilbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ typedef struct	s_image
 	int			bpp;
 	int			sl;
 	int			end;
+
+	int			draggable;
 }				t_image;
 
 typedef struct	s_coord
